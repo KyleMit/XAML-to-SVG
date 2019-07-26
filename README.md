@@ -2,6 +2,8 @@
 
 Convert XAML contents from MS Expression Design into nice, usable, sharable SVGs
 
+Export from Design with Edit > Copy XAML (<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd>)
+
 ## References
 
 * [Using the “Copy Xaml” feature in Expression Design to create HTML5 SVG Path Data.](https://www.michaelcrump.net/using-the-copy-xaml-feature-in-expression-design-to-create-html5-svg-path-data/)

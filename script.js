@@ -8,16 +8,28 @@
 })()
 
 
+let convertPath = (p) => {
+	var xamlAttrArray = [...p.attributes]; //.map((e) => ({name: [e.name], value: e.value}));
+
+	var pathAttributeMap = {
+		"data": { name: "d", value: (input) => input.replace(/^F1 /,'') },
+	};
+
+	var svgAttributes = xamlAttrArray.map(xamlAttr => {
+		var map = pathAttributeMap[xamlAttr.name.toLowerCase()]
+		return map ? { name: map.name, value: map.value(xamlAttr.value) } : null
+	})
+
+	var attributes = svgAttributes.filter(a => a).map(a => `${a.name}='${a.value}'`).join(' ');
+	
+	return `<path ${attributes} />`
+}
+
 let convertXaml = (xaml) => {
 	let parser = new DOMParser();
 	let xmlDoc = parser.parseFromString(xaml,"text/xml");
 
 	let paths = [...xmlDoc.getElementsByTagName("Path")]
-
-	let convertPath = (p) => {
-		var obj = Object.assign(...[...p.attributes].map((e) => ({[e.name]: e.value})))
-		return `<path d='${p.attributes.Data.value.replace(/^F1 /,'')}' />`
-	}
 
 	var pathsSvg = [...paths].map(convertPath)
 	
