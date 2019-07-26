@@ -18,6 +18,7 @@ let updateSvg = () => {
 	let xaml = document.getElementById('text-xaml').value;
 	let svg = convertXaml(xaml);
 	document.getElementById('text-svg').value = svg;
+	document.getElementById('svg').innerHTML = svg;
 }
 
 document.getElementById('text-xaml').addEventListener('change', updateSvg)

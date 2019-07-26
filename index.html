@@ -9,7 +9,7 @@
 
     <style type="text/css">
         html {
-            background: #fffff5;
+            background: #fffff9;
             margin: 0;
             padding: 0;
         }
@@ -19,7 +19,7 @@
             background: white;
             padding: 15px;
             height: 100%;
-            height: 100vh;
+            min-height: 100vh;
         }
         .form-group {
             display: flex;
@@ -37,6 +37,10 @@
             min-height: 120px;
             overflow: auto;
         }
+        svg {
+            width: 100%;
+            border: 1px solid grey;
+        }
     </style>
 </head>
 
@@ -51,9 +55,17 @@
         </div>
 
         <div class="form-group">
-            <label for="text-svg" >SVG</label>
+            <label for="text-svg" >SVG - Text</label>
             <textarea name="text-svg" id="text-svg" ></textarea>
         </div>
+
+        <div class="form-group">
+            <label for="text-svg" >SVG - Display</label>
+            <svg id="svg">
+                
+            </svg>
+        </div>
+        
     </div>
 
 
