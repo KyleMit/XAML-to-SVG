@@ -9,9 +9,20 @@
 
 
 let convertXaml = (xaml) => {
-	let svg = xaml;
+	let parser = new DOMParser();
+	let xmlDoc = parser.parseFromString(xaml,"text/xml");
 
-	return svg
+	let paths = [...xmlDoc.getElementsByTagName("Path")]
+
+	let convertPath = (p) => {
+		var obj = Object.assign(...[...p.attributes].map((e) => ({[e.name]: e.value})))
+		return `<path d='${p.attributes.Data.value.replace(/^F1 /,'')}' />`
+	}
+
+	var pathsSvg = [...paths].map(convertPath)
+	
+	return pathsSvg.join('')
+
 }
 
 let updateSvg = () => {
